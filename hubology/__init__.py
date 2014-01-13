@@ -9,7 +9,7 @@ import urllib2
 import uuid
 from flask.ext.login import LoginManager, current_user
 
-from hubology.models import HubUser
+# from hubology.models import HubUser
 
 
 def geocode_location(location_name):    
@@ -38,9 +38,9 @@ login_manager = LoginManager()
 
 login_manager.init_app(app)
 
-@login_manager.user_loader
-def load_user(userid):
-    return HubUser.find(userid)
+# @login_manager.user_loader
+# def load_user(userid):
+#     return HubUser.find(userid)
 
 
 login_manager.login_view = "/sign-in"
@@ -96,7 +96,7 @@ import hubology.views.do
 # import hubology.views.sign_out
 import hubology.views.hub
 import hubology.views.map
-import hubology.views.people
+# import hubology.views.people
 import hubology.views.profile
-import hubology.views.delete_profile
+# import hubology.views.delete_profile
 
