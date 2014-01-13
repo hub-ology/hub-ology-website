@@ -1,0 +1,95 @@
+{% extends 'authenticated-base.html' %}
+
+{% block content %}
+
+<div class="row topbar_content">
+	<div class="span12 columns offset2">
+		<h2>hub-ology members</h2>
+		{% if links and links|length > 1 %}
+		<div class="pagination">
+		        <ul>
+				{% for link in links %}
+		          <li class="{% if page_number == link[0] %}active{% elif 'Previous' in link[0] %}prev{% elif 'Next' in link[0] %}next{% endif %}"><a href="{{ link[1] }}">{{ link[0] }}</a></li>
+				{% endfor %}
+		        </ul>
+
+		</div>		
+		{% endif %}
+	</div>
+</div>
+
+<div class="row">
+	<div class="span12 columns offset2">
+		<table class="zebra-striped">
+	        <thead>
+	          <tr>
+				<th></th>		
+				<th></th>
+	            <th>Name</th>
+	            <th>Location</th>
+	            <th>Member Type</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+		    {% if users %}
+		      {% for user in users %}
+	          <tr>
+				<td>
+					{% if user.socnet == 'linkedin' %}
+					<img width="48px" height="48px" src="/static/linkedin.png">
+					{% elif user.socnet == 'twitter' %}					
+					<img width="48px" height="48px" src="/static/twitter-bird.png">
+					{% elif user.socnet == 'facebook' %}					
+					<img width="48px" height="48px" src="/static/facebook.png">
+					{% endif %}
+				</td>
+				<td>
+					<a href="{{ user.link }}" target="_blank">
+						<img width="48px" height="48px" src="{{ user.profile_image_url }}">
+					</a>
+				</td>
+	            <td>
+					<a href="{{ user.link }}" target="_blank">
+						{{ user.name }}
+					</a>
+				</td>
+				{% if user.location_name %}
+	            	<td>{{ user.location_name }}</td>
+				{% else %}
+					<td>Unknown</td>
+				{% endif %}
+				{% if user.classification %}				
+	            	<td>{{ user.classification|join(', ') }}</td>
+				{% else %}
+					<td>Unknown</td>
+				{% endif %}
+	          </tr>
+			  {% endfor %}
+			{% endif %}
+	        </tbody>
+	      </table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span12 columns offset2">
+		{% if links and links|length > 1 %}
+		<div class="pagination">
+
+		        <ul>
+				{% for link in links %}
+		          <li class="{% if page_number == link[0] %}active{% elif 'Previous' in link[0] %}prev{% elif 'Next' in link[0] %}next{% endif %}"><a href="{{ link[1] }}">{{ link[0] }}</a></li>
+				{% endfor %}
+		        </ul>
+		</div>		
+		{% endif %}		
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+
+});
+</script>
+
+{% endblock %}
+

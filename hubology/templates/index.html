@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div id="nav" class="row">						
+		<div id="intro" class="span16 intro">
+			<h1><a href="/about">hub-ology</a> promotes big tech in small towns</h1>
+{#			<h3>Want to get involved? #}
+{#				<a href="/sign-in">Sign in</a> to get started. The <a href="https://github.com/hub-ology" target="_blank">code</a> is <a href="http://en.wikipedia.org/wiki/Open_source" target="_blank">open source</a>, too.#}
+{#			</h3>#}
+                        <h3>Wondering how this started? Watch the <a href="http://youtu.be/6vU2FDoOB-A" target="_blank">TEDxSpartanburg talk</a>
+                        </h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3 columns">
+			<div class="thought_circle">
+				<h2>Inspire</h2>
+				<p>New Ideas, <br/>New Technology, New Software Developers</p>
+			</div>
+		</div>
+		<div class="span2 columns bottom_aligned">
+			<div class="small_blue_thought_circle">
+			</div>
+		</div>		
+		<div class="span3 columns">
+			<div class="thought_circle">
+				<h2>Educate</h2>
+				<p>Work with local educators to weave computer science into existing course work</p>
+			</div>
+		</div>
+		<div class="span2 columns bottom_aligned">
+			<div class="small_blue_thought_circle">
+			</div>
+		</div>		
+		<div class="span3 columns">
+			<div class="thought_circle">
+				<h2>Do</h2>
+				<p>Share Experience, Build Something, <br/>Start a Company, <br/>Give Back</p>
+			</div>
+		</div>		
+	</div>
+{% endblock %}
+
+{% block social_links %}
+<div class="row">			
+	<div class="span2 columns offset3">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="B3N8KPE3573KA">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="height: 18px; width:60px;">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+    <div class="span1">
+        <script data-gittip-username="hub-ology"
+            data-gittip-widget="button"
+            src="//gttp.co/v1.js"></script>
+    </div>
+    <div class="span2">
+		<a href="http://twitter.com/share"
+		  class="twitter-share-button" data-url="http://www.hubology.org"
+		  data-text="hub-ology: big tech, small towns" data-count="horizontal"
+		   data-via="hubology">Tweet</a>
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </div>
+    <div class="span2">
+		<div class="g-plusone" data-size="medium" data-href="http://www.hubology.org"></div>
+		<script type="text/javascript">
+		  (function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/plusone.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+    </div>
+    <div class="span1">
+		<iframe src="http://www.facebook.com/plugins/like.php?app_id=244367082261380&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2Fhub-ology%2F170760142994999&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
+    </div>
+</div>
+<div class="row">
+    <div class="span10 offset5">
+    </div>
+</div>
+{% endblock %}

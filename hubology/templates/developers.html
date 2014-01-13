@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div id="header" class="row">
+	<div class="span4 columns">
+	  <a href="/"><img src="static/hub-ology-logo-small.png" alt="hub-ology logo"></a>
+	</div>
+	<div id="menu-detail" class="span12 columns">
+		<p>
+		<a class="red_link" href="/">hub-ology</a> connects <a href="/developers">developers</a>
+		with each other
+		<br>
+		[
+		<a href="/educators">educators</a>
+		<a href="/designers">designers</a>		
+		<a href="/mentors">mentors</a>
+		]
+		</p>
+  	</div>		
+</div>
+{% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="span16 columns intro">
+			<h1><a href="/developers">software developers</a> live in rural areas, too</h1>
+			<h3>Connect with peers in your area and make something great!</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3 columns">
+			<div class="thought_circle">
+				<h2>Connect</h2>
+				<p>Get together and talk tech! Start a user group, share and inspire ideas.
+				</p>
+			</div>
+		</div>
+		<div class="span2 columns bottom_aligned">
+			<div class="small_blue_thought_circle"></div>
+		</div>		
+		<div class="span3 columns">
+			<div class="thought_circle">
+				<h2>Volunteer</h2>
+				<p>Work with educators in your area to introduce students to computer science.</p>
+			</div>
+		</div>
+		<div class="span2 columns bottom_aligned">
+			<div class="small_blue_thought_circle">
+			</div>
+		</div>		
+		<div class="span3 columns">
+			<div class="thought_circle">
+				<h2>Lead</h2>
+				<p>Turn your project into a business. Create jobs.  Give back to the community.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span14 columns page_detail">
+			<p>
+				Love your small town but want to do something big? hub-ology wants to help you
+				collaborate with other developers in your area.  Feeling entrepreneurial? 
+				Find a <a href="/mentors">mentor</a> to help you get started.  Want to revolutionize K-12 education
+				with computer science?  Work with an <a href="/educators">educator</a> in your area and help them weave 
+				computer science into their existing course work.  Need some UI polish for your latest
+				creation?  <a href="/designers">Designers</a> are here, too.
+			
+			</p>
+{#			<p>#}
+{#				<br>#}
+{#				Ready to dominate some code? <a href="/sign-in">Sign up</a> to be a hub-ology developer.#}
+{#			</p>#}
+		</div>
+	</div>
+	
+{% endblock %}

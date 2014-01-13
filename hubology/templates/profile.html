@@ -1,0 +1,326 @@
+{% extends 'authenticated-base.html' %}
+
+{% block extrascripts %}
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+
+function process_location(position) {
+	geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	geocoder.geocode({'latLng': latlng}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        if (results[2]) {
+			  console.log(results[2].formatted_address);
+			  $('#location_name').val(results[2].formatted_address);
+	        }
+	      } else {
+			alert("Geocoder failed due to: " + status);
+	      }
+	});
+}
+
+function use_current_location() {
+	get_location(process_location,
+			//the error callback
+			function (error)
+			{
+				switch(error.code) 
+				{
+					case error.TIMEOUT:
+						alert ('Timeout');
+						break;
+					case error.POSITION_UNAVAILABLE:
+						alert ('Position unavailable');
+						break;
+					case error.PERMISSION_DENIED:
+						alert ('Unable to determine location: Permission denied');
+						break;
+					case error.UNKNOWN_ERROR:
+						alert ('Unknown error');
+						break;
+				}
+				//Default to Spartanburg, SC
+				process_location({'coords':{'latitude': 34.9494444, 'longitude': -81.9322222}})
+			}, {'timeout':5000});
+	
+	
+}		
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row topbar_content">
+	<div class="span2 columns offset2">
+		<a href="{{ current_user.link }}" target="_blank"><img src="{{ current_user.profile_image_url }}"></a>
+	</div>
+	<div class="span10 columns">
+		<h1>{{ current_user.name }}</h1>
+	</div>	
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+<div class="row">
+	<div class="span10 columns offset2">
+    {% for category, message in messages %}
+		{% if category != 'message' %}
+	    <div class="alert-message {{ category }}">
+	        <a class="close" href="#">×</a>
+	        <p><strong>{{ category|capitalize }}!</strong> {{ message }}</p>
+	    </div>
+		{% endif %}
+    {% endfor %}
+	</div>
+</div>
+  {% endif %}
+{% endwith %}
+
+
+<form id="profile_form" action="/profile" class="form-stacked" method="POST">
+<div class="row">
+	<div class="span12 columns offset2">
+        <fieldset>
+          <legend>hub-ology profile</legend>
+          <div class="clearfix">
+            <label for="location_name">Location</label>
+            <div class="input">				
+              <input class="xlarge" id="location_name" name="location_name" size="30" type="text" 
+				{% if current_user.location_name %}
+					value="{{ current_user.location_name }}"
+				{% endif %}
+				>
+				<input id="location" name="location" type="hidden">
+			  <a id="use_current_location_btn" class="btn">Use Current Location</a>
+              <span class="help-block">
+				Don't use your home or work address.  Just specify the town where you want to get involved.<br>
+				Example: Clifton, SC
+              </span>	
+			 
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="email">Email</label>
+            <div class="input">
+              <input class="xlarge" id="email" name="email" size="30" type="text" 
+				{% if current_user.email %}
+					value="{{ current_user.email }}"
+				{% endif %}
+				>
+              <span class="help-block">
+                By specifying an email address, you're indicating we may contact you directly.<br>
+				Don't worry, we won't give out your email to others without your permission.
+              </span>				
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label id="classification">Member Type</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="checkbox" name="classification" value="developer"
+					{% if current_user.is_developer() %}
+						checked
+					{% endif %}
+					>
+                    <span>Software Developer</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="classification" value="educator"
+					{% if current_user.is_educator() %}
+						checked
+					{% endif %}
+					>
+                    <span>Educator</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="classification" value="designer"
+					{% if current_user.is_designer() %}
+						checked
+					{% endif %}
+					>
+                    <span>Designer</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="classification" value="mentor"
+					{% if current_user.is_mentor() %}
+						checked
+					{% endif %}
+					>
+                    <span>Mentor</span>
+                  </label>
+                </li>
+              </ul>
+              <span class="help-block">
+                <strong>Note:</strong>You may select more than one
+              </span>
+            </div>
+        </fieldset>
+	</div>
+	<div class="row">
+		<div class="span10 columns offset2">
+		    <div class="actions">		
+				<div class="row">
+					<div class="span6 columns">				
+				          <button type="submit" class="btn primary">Save Changes</button>&nbsp;
+					</div>
+					<div class="span3 columns">				
+						<a  id="delete_profile_btn" 
+							href="#?w=500" rel="delete_profile_popup"
+							class="btn danger poplight" 
+							>Delete Profile</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+
+<div class="row">
+	<div class="span8 columns offset4">
+	</div>
+</div>
+
+<div id="delete_profile_popup" class="modal popup_block">
+	<div class="modal-header">
+	  <h3>Really Delete Your Profile?</h3>
+	  <a href="#" class="close">×</a>
+	</div>
+	<div class="modal-body">
+	  <p>We respect your right to leave the hub-ology community at anytime and for any reason.
+		 If you choose to delete your profile, we'll remove all the data we've saved for you
+		 and log you out of the site.  Should you choose to return at a later time, simply 
+		 sign in again with your favorite account and we'll happily welcome you back.
+		 Thank you for supporting hub-ology!
+	  </p>
+	</div>
+	<div class="modal-footer">
+	  <a href="#" class="btn close">Cancel</a>
+	  <a id="delete_profile_confirm_btn" href="#" class="btn danger">Yes, Delete My Profile</a>
+	</div>
+</div>
+
+<script>
+
+function geocode_location(location_name) {
+    try{
+        var location;
+        if (location_name) {    
+            geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {            
+                    location = results[0].geometry.location;
+                  } else {
+					console.log(status);
+					console.log(results);					
+				  }
+            });                                                
+        }
+        return location
+    } catch (err) {
+        console.log(err);
+        return null;
+    }
+}
+
+$(document).ready(function() {
+	
+    //When you click on a link with class of poplight and the href starts with a # 
+    $('a.poplight[href^=#]').click(function() {
+        var popID = $(this).attr('rel'); //Get Popup Name
+        var popURL = $(this).attr('href'); //Get Popup href to define size
+
+        //Pull Query & Variables from href URL
+        var query= popURL.split('?');
+        var dim= query[1].split('&');
+        var popWidth = dim[0].split('=')[1]; //Gets the first query string value
+
+        //Fade in the Popup and add close button
+        $('#' + popID).fadeIn().css({ 'width': Number( popWidth ) });
+
+        //Define margin for center alignment (vertical   horizontal) - we add 80px to the height/width to accomodate for the padding  and border width defined in the css
+        var popMargTop = ($('#' + popID).height() + 80) / 2;
+        var popMargLeft = ($('#' + popID).width() + 80) / 2;
+
+        //Apply Margin to Popup
+        $('#' + popID).css({
+            'margin-top' : -popMargTop,
+            'margin-left' : -popMargLeft
+        });
+
+        //Fade in Background
+        $('body').append('<div id="fade"></div>'); //Add the fade layer to bottom of the body tag.
+        $('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Fade in the fade layer - .css({'filter' : 'alpha(opacity=80)'}) is used to fix the IE Bug on fading transparencies 
+
+        return false;
+    });
+
+    //Close Popups and Fade Layer
+    $('a.close, #fade').live('click', function() { //When clicking on the close or fade layer...
+        $('#fade , .popup_block').fadeOut(function() {
+            $('#fade').remove();  //fade them both out
+        });
+        return false;
+    });	
+	$(document).delegate('a.close', 'click', function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var flashMessage = $this.closest('.alert-message');
+		if ( flashMessage ) {
+			flashMessage.remove();
+		}
+	});
+	
+	
+	$(document).delegate('#use_current_location_btn', 'click', function(e) {
+		e.preventDefault();
+		use_current_location();
+	});
+
+	$(document).delegate('#delete_profile_confirm_btn', 'click', function(e) {
+		e.preventDefault();
+		window.location = "http://"+window.document.location.host+"/delete-profile";
+	});
+	
+	var geoCodeSubmit = false;
+	
+	$('#profile_form').submit(function() {
+	   if (geoCodeSubmit) {
+		  geoCodeSubmit = false;
+		  return true;
+	   } else {		
+		  //geocode location_name and then submit form
+	      geocoder = new google.maps.Geocoder();
+	      geocoder.geocode( { 'address': $('#location_name').val()}, function(results, status) {
+	            if (status == google.maps.GeocoderStatus.OK) {
+	              locationData = results[0].geometry.location;
+				  if (locationData) {
+				  	$('#location').val(locationData);
+			  	  }
+	            } else {
+					console.log(status);
+					console.log(results);					
+				}
+				geoCodeSubmit = true;
+				//Now submit the form...
+				$('#profile_form').submit();
+	      });
+		  return false;
+	  }	  
+	});
+	
+});
+</script>
+
+{% endblock %}
+
