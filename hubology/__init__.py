@@ -46,11 +46,13 @@ login_manager.init_app(app)
 login_manager.login_view = "/sign-in"
 login_manager.login_message = u"Please sign in to access hub-ology."
 
+
 #Setup 404 handler
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-    
+
+
 #Setup 500 handler
 @app.errorhandler(500)
 def internal_server_error(e):
@@ -58,6 +60,7 @@ def internal_server_error(e):
         from hubology.views.sign_out import sign_out
         sign_out()
     return render_template('500.html'), 500
+
 
 def templated(template=None):
     def decorator(f):
@@ -77,12 +80,12 @@ def templated(template=None):
     return decorator
         
 @app.route('/')
-@templated('index.html')
+@templated('base-bootstrap.html')
 def index():
-    #render the main site page
-    return dict()
+    return {}
 
-#Import other views
+
+# Import other views
 import hubology.views.about
 import hubology.views.aboutlogo
 import hubology.views.educators
