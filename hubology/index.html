@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	{% block title %}
+	<title>hub-ology: big tech, small towns</title>
+	{% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="hub-ology promotes big tech in small towns">
+	<meta name="author" content="hub-ology">
+
+	<meta property="og:title" content="hub-ology: big tech, small towns"/>
+	<meta property="og:type" content="cause"/>
+	<meta property="og:url" content="http://hub-ology.org"/>
+	<meta property="og:image" content="http://hub-ology.org/static/hub-ology-logo-small.png"/>
+	<meta property="og:site_name" content="hub-ology"/>
+	<meta property="fb:admins" content="corbinbs"/>
+	<meta property="og:description"
+	          content="hub-ology promotes big tech in small towns.
+					   We hope to inspire new ideas, new technology, new computer scientists,
+					   and new companies in small towns."/>
+
+	<link rel="author" href="/static/humans.txt" />
+	<link rel="shortcut icon" href="/static/favicon.ico">
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="static/css/hubology.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">hub-ology</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Projects</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#board">Board</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="static/hub-ology-logo-mid-size.png" alt="">
+                    <div class="intro-text">
+                        <span class="skills">Equip - Educate - Encourage</span>
+                        <hr class="star-light">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-lg-offset-2">
+                                <p>hub-ology is a 501(c)(3) public charity dedicated to helping
+                                    rural problem solvers do more with computing.
+                                </p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p>Attend our <a href="http://www.meetup.com/hub-py">hub.py</a> events and support the PyTruck to bring free equipment and training to a rural area near you</p>
+                            </div>
+                            <div class="col-lg-8 col-lg-offset-2 text-center">
+                                <a href="#donate" class="btn btn-lg btn-outline">
+                                    <i class="fa fa-usd"></i> Donate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Projects</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#equip" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="static/img/projects/hardware.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#educate" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="static/img/projects/hub-py.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#encourage" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="static/img/projects/pytruck.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="board">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Board of Directors</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <h3>Rebecca Anderson</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.linkedin.com/pub/rebecca-anderson/3b/a58/406" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <h3>Laura Bailey</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.linkedin.com/in/lauraregister" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <h3>Chris Gause</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://github.com/cgause" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/rhymeswithsauce" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/pub/chris-gause/24/29a/a34" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <h3>Brian Painter</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://github.com/BrianPainter" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/brianpainter" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/brianpainter" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <h3>Brian Corbin</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://github.com/corbinbs" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/corbinbs" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/corbinbs" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="http://blog.rockthefatknot.com" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-globe"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="donate">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Donate</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <iframe src="https://donorbox.org/embed/hub-ology?show_content=true" width="100%" height="800px"
+                            seamless="seamless" name="donorbox" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Clifton, SC 29324</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://github.com/hub-ology" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/hubology" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/hubology.org" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About hub-ology</h3>
+                        <p>hub-ology is dedicated to equiping, educating, and encouraging
+                            rural problem solvers to do more with computing.  The IRS classifies hub-ology as a public
+                            charity under section 501(c)(3) of the Internal Revenue Code.  Our EIN is 46-3997463.  A copy of
+                            our <a href="static/hub-ology-501c3-public-charity.pdf" target="_blank">determination letter</a>
+                            is available online.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; hub-ology 2015
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Projects -->
+    <div class="portfolio-modal modal fade" id="equip" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Equipment</h2>
+                            <hr class="star-primary">
+                            <img src="static/img/projects/hardware.png" class="img-responsive img-centered" alt="">
+                            <p>
+                                Most of the money we raise goes directly toward the purchase of computer hardware
+                                for rural problem solvers.  This often includes low cost, single board computers like
+                                the Raspberry Pi and accessories.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    <strong><a href="http://www.raspberrypi.org/">Raspberry Pi Foundation</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="educate" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>hub.py</h2>
+                            <hr class="star-primary">
+                            <img src="static/img/projects/hub-py-thin.png" class="img-responsive img-centered" alt="">
+                            <p>
+                                The Hub City Python User Group (hub.py) was started to help provide free meetups
+                                and training sessions related to the Python programming language and various
+                                topics in computer science.  All meetings are free and open to the public.
+                                We'd love to have you join our meetup page and attend the meetups that are of interest
+                                to you.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    <strong><a href="http://www.meetup.com/hub-py">hub.py meetup page</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    <strong><a href="https://twitter.com/hubpy">@hubpy</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="encourage" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>PyTruck</h2>
+                            <hr class="star-primary">
+                            <img src="static/img/projects/pytruck-vehicle.png" class="img-responsive img-centered" alt="">
+                            <p>
+                                The PyTruck is our flagship project to bring free computer hardware and training sessions
+                                to rural problem solvers.  We realize that it is not always possible for some of the best
+                                problem solvers in rural or remote areas to attend meetups and training sessions that are
+                                common in cities these days.  So we're going to bring free hardware and trading to them.
+                                We're currently raising funds to complete the first PyTruck.
+                                Please consider making a donation so that we can use the PyTruck to provide more outreach
+                                to rural areas.
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="static/js/classie.js"></script>
+    <script src="static/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="static/js/jqBootstrapValidation.js"></script>
+    <script src="static/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="static/js/freelancer.js"></script>
+
+</body>
+
+</html>
