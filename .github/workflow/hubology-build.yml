@@ -1,0 +1,60 @@
+# This workflow will deploy the hubology static website to AWS S3
+# It will be expanded later to closely match the engineer1 site workflow once mkdocs is implemented
+
+name: Hubology static site deployment
+
+on:
+  # workflow_dispatch
+  push:
+    branches: [ main, staging ]
+
+jobs:
+  # it seems wasteful to need to perform the deploy operation in this manner but the environment name in
+  # github actions is in beta and is only available at the job level thus the two distinct jobs below. The alternative would
+  # be to use a naming convention for secrets and access with a pattern like 'secrets.{0}.AWS_ACCESS_KEY_ID' where {0} would be 
+  # replaced by the branch name or an environment variable based on the branch 
+  deploy_stage:
+    if: endsWith(github.ref, '/staging')
+    runs-on: ubuntu-latest
+    environment: Staging
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+      
+    - name: Deploy
+      uses: reggionick/s3-deploy@v3
+      with:
+        folder: hubology
+        bucket: ${{ secrets.S3_BUCKET }}
+        bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+        dist-id: ${{ secrets.CF_DIST_ID }}
+        invalidation: "/*"
+        delete-removed: true
+        no-cache: true
+        private: true
+
+  deploy_production:
+    if: endsWith(github.ref, '/main')
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Deploy
+      uses: reggionick/s3-deploy@v3
+      with:
+        folder: hubology
+        bucket: ${{ secrets.S3_BUCKET }}
+        bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+        dist-id: ${{ secrets.CF_DIST_ID }}
+        invalidation: "/*"
+        delete-removed: true
+        no-cache: true
+        private: true
