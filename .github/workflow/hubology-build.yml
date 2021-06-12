@@ -37,7 +37,7 @@ jobs:
         private: true
 
   deploy_production:
-    if: endsWith(github.ref, '/main')
+    if: endsWith(github.ref, '/master')
     runs-on: ubuntu-latest
     environment: Production
     env:
