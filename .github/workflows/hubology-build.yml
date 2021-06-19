@@ -6,7 +6,7 @@ name: Hubology static site deployment
 on:
   # workflow_dispatch
   push:
-    branches: [ staging ]
+    branches: [ master, staging ]
 
 jobs:
   # it seems wasteful to need to perform the deploy operation in this manner but the environment name in
